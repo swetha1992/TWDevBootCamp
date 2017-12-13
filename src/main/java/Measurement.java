@@ -1,10 +1,12 @@
 import java.util.Objects;
 
 public class Measurement {
-    double value;
-    String type;
 
-    public Measurement(double value, String type) {
+    private double value;
+    private MeasurementType type;
+
+
+    public Measurement(double value, MeasurementType type) {
         this.value = value;
         this.type = type;
     }
@@ -14,12 +16,21 @@ public class Measurement {
         if (this == o) return true;
         if (!(o instanceof Measurement)) return false;
         Measurement that = (Measurement) o;
-        return Double.compare(that.value, value) == 0 &&
-                Objects.equals(type, that.type);
+        return Double.compare(that.getInchValue(), getInchValue()) == 0;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(value, type);
     }
+
+    private double getInchValue() {
+        if (type.equals(MeasurementType.INCH))
+            return value;
+        return value * 12;
+    }
+
+
+
 }
+
