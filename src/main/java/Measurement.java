@@ -2,14 +2,15 @@ import java.util.Objects;
 
 public class Measurement {
 
-    private double value;
-    private MeasurementType type;
+    private final double value;
+    private final MeasurementType type;
 
 
     public Measurement(double value, MeasurementType type) {
         this.value = value;
         this.type = type;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -24,13 +25,14 @@ public class Measurement {
         return Objects.hash(value, type);
     }
 
-    private double getInchValue() {
+    public double getInchValue() {
         if (type.equals(MeasurementType.INCH))
             return value;
         return value * 12;
     }
 
-
-
+    public Measurement addMeasurements(Measurement measurement) {
+        return new Measurement(this.getInchValue() + measurement.getInchValue(),MeasurementType.INCH);
+    }
 }
 

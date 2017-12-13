@@ -44,4 +44,37 @@ public class MeasurementTest {
         Assert.assertNotEquals(measurementOne, measurementTwo);
     }
 
+    @Test
+    public void shouldVerifyIfAdditionOfOneFeetAndOneFeetIsTwentyFourInch() {
+        Measurement measurementOne = new Measurement(1, MeasurementType.FEET);
+        Measurement measurementTwo = new Measurement(1, MeasurementType.FEET);
+        Measurement additionResult = measurementOne.addMeasurements(measurementTwo);
+        Measurement expectedResult = new Measurement(24,MeasurementType.INCH);
+        Assert.assertEquals(expectedResult, additionResult);
+    }
+
+
+
+    @Test
+    public void shouldVerifyIfAdditionOfTenInchAndTenInchIsTwentyInch() {
+        Measurement measurementOne = new Measurement(10, MeasurementType.INCH);
+        Measurement measurementTwo = new Measurement(10, MeasurementType.INCH);
+        Measurement additionResult = measurementOne.addMeasurements(measurementTwo);
+        Measurement expectedResult = new Measurement(20,MeasurementType.INCH);
+        Assert.assertEquals(expectedResult, additionResult);
+
+    }
+
+
+    @Test
+    public void shouldVerifyIfAdditionOfTenInchAndOneFeetIsTwentyInch() {
+        Measurement measurementOne = new Measurement(10, MeasurementType.INCH);
+        Measurement measurementTwo = new Measurement(1, MeasurementType.FEET);
+        Measurement additionResult = measurementOne.addMeasurements(measurementTwo);
+        Measurement expectedResult = new Measurement(22,MeasurementType.INCH);
+        Assert.assertEquals(expectedResult, additionResult);
+
+    }
+
+
 }
